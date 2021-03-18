@@ -2,10 +2,15 @@
 from time import sleep
 
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from webdriver_manager.firefox import ChromeDriverManager
+# from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
 
 # 1.Khai bao bien browser
+options = webdriver.ChromeOptions()
+options.add_experimental_option(
+    'excludeSwitches',
+    ['enable-logging'],
+)
 browser = webdriver.Chrome(executable_path=ChromeDriverManager().install())
 
 # 2. Mo thu 1 trang web
@@ -19,5 +24,5 @@ for name in name_list:
     print(name)
 sleep(5)
 input('Nhập enter')
-#4. Dong trang web
+# 4. Dong trang web
 browser.close()
